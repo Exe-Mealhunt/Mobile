@@ -17,12 +17,9 @@ export default function ExploreLayout() {
       />
 
       <Stack.Screen
-        name="detail"
+        name="list_recipe"
         options={{
-          headerStyle: {
-            backgroundColor: "transparent",
-          },
-          headerTintColor: "#000000",
+          headerShown: false,
         }}
       />
     </Stack>
