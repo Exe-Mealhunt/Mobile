@@ -1,16 +1,15 @@
-import { Stack } from "expo-router";
+import { createStackNavigator } from "@react-navigation/stack";
+import ExploreScreen from "./index";
+import ListRecipeScreen from "./list_recipe";
+
+const Stack = createStackNavigator();
 
 export default function ExploreLayout() {
   return (
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#F05193",
-        },
-      }}
-    >
+    <Stack.Navigator>
       <Stack.Screen
         name="index"
+        component={ExploreScreen}
         options={{
           headerShown: false,
         }}
@@ -18,10 +17,11 @@ export default function ExploreLayout() {
 
       <Stack.Screen
         name="list_recipe"
+        component={ListRecipeScreen}
         options={{
           headerShown: false,
         }}
       />
-    </Stack>
+    </Stack.Navigator>
   );
 }
