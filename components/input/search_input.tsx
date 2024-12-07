@@ -29,7 +29,7 @@ export default function SearchInput({ onSearch }: SearchInputProps) {
         containerStyle={{
           backgroundColor: "#fff",
           borderRadius: 12,
-          borderWidth: 1,
+          borderWidth: 0,
           height: 45,
         }}
         inputContainerStyle={{

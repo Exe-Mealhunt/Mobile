@@ -1,19 +1,19 @@
-import { Stack } from "expo-router";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import FavoriteScreen from "./index";
+
+const Stack = createStackNavigator();
 
 export default function FavoriteLayout() {
   return (
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#f4511e",
-        },
-        headerTintColor: "#fff",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      }}
-    >
-      <Stack.Screen name="index" />
-    </Stack>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="index"
+        component={FavoriteScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
   );
 }

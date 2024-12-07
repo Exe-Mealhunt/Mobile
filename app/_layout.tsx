@@ -1,13 +1,19 @@
-import { Stack } from "expo-router";
+import { createStackNavigator } from "@react-navigation/stack";
 import "../global.css";
 import { ThemeProvider, createTheme } from "@rneui/themed";
+
+import { FavoritesProvider } from "@/context/FavoritesContext";
+import TabLayout from "./(tab)/_layout";
+import FilterScreen from "./(filter)";
+
+const Stack = createStackNavigator();
 
 const theme = createTheme({
   lightColors: {
     primary: "#F05193",
   },
   darkColors: {
-    primary: "#000000",
+    primary: "#F05193",
   },
   mode: "light",
 });
@@ -15,9 +21,20 @@ const theme = createTheme({
 export default function RootLayout() {
   return (
     <ThemeProvider theme={theme}>
-      <Stack>
-        <Stack.Screen name="(tab)" options={{ headerShown: false }} />
-      </Stack>
+      <FavoritesProvider>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={TabLayout}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Filter"
+            component={FilterScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </FavoritesProvider>
     </ThemeProvider>
   );
 }
