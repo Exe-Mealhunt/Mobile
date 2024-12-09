@@ -22,8 +22,13 @@ export default function GroupButton({
       buttons={data.map((item) => item.name)}
       selectedIndex={selectedDataIndex}
       onPress={(index) => {
-        setSelectedDataIndex(index);
-        setSelectedDataName(data[index]?.name);
+        if (index === selectedDataIndex) {
+          setSelectedDataIndex(-1);
+          setSelectedDataName("");
+        } else {
+          setSelectedDataIndex(index);
+          setSelectedDataName(data[index]?.name || "");
+        }
       }}
       containerStyle={{ marginVertical: 0, marginBottom: 0, borderWidth: 0 }}
       buttonStyle={{
