@@ -1,13 +1,18 @@
-import { Tabs } from "expo-router";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { View } from "react-native";
+import ExploreLayout from "./(explore)/_layout";
+import FavoriteLayout from "./(favorite)/_layout";
+import ProfileLayout from "./(profile)/_layout";
+
+const Tab = createBottomTabNavigator();
 
 export default function TabLayout() {
   return (
-    <Tabs>
-      <Tabs.Screen
+    <Tab.Navigator>
+      <Tab.Screen
         name="(explore)"
+        component={ExploreLayout}
         options={{
           headerShown: false,
           tabBarLabel: "Explore",
@@ -18,8 +23,9 @@ export default function TabLayout() {
           tabBarInactiveTintColor: "#B0B0B0",
         }}
       />
-      <Tabs.Screen
+      <Tab.Screen
         name="(favorite)"
+        component={FavoriteLayout}
         options={{
           headerShown: false,
           tabBarLabel: "Favorite",
@@ -30,9 +36,9 @@ export default function TabLayout() {
           tabBarInactiveTintColor: "#B0B0B0",
         }}
       />
-
-      <Tabs.Screen
+      <Tab.Screen
         name="(profile)"
+        component={ProfileLayout}
         options={{
           headerShown: false,
           tabBarLabel: "Profile",
@@ -43,8 +49,6 @@ export default function TabLayout() {
           tabBarInactiveTintColor: "#B0B0B0",
         }}
       />
-
-      <View className="w-full h-1.5 bg-primary mt-2.5" />
-    </Tabs>
+    </Tab.Navigator>
   );
 }

@@ -1,4 +1,3 @@
-import { Link } from "expo-router";
 import {
   View,
   Text,
@@ -6,6 +5,7 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import { useEffect, useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -14,6 +14,7 @@ import SearchInput from "../../../components/input/search_input";
 import CardFood from "@/components/cards/card_food";
 import { getRequest } from "@/helpers/api-requests";
 import homeBar from "../../../assets/images/home-bar.png";
+import { useNavigation } from "@react-navigation/native";
 import foodLogo from "../../../assets/images/Cards/food-logo.webp";
 import ingredientsLogo from "../../../assets/images/Cards/igredient-logo.jpg";
 import desertsLogo from "../../../assets/images/Cards/deserts.jpg";
@@ -21,6 +22,8 @@ import desertsLogo from "../../../assets/images/Cards/deserts.jpg";
 import { Recipe } from "../../../constants/types/recipes.type";
 
 export default function ExploreScreen() {
+  const navigation = useNavigation<any>();
+
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
 
@@ -55,7 +58,10 @@ export default function ExploreScreen() {
       <View className="pl-5"></View>
       <ScrollView className="bg-white">
         <View className="p-4">
-          <TouchableOpacity className="rounded-2xl overflow-hidden bg-white shadow-md mb-4">
+          <Pressable
+            onPress={() => navigation.navigate("list_recipe")}
+            className="rounded-2xl overflow-hidden bg-white shadow-md mb-4"
+          >
             <Image
               source={foodLogo}
               className="w-full h-48"
@@ -65,10 +71,13 @@ export default function ExploreScreen() {
               <Text className="text-white text-3xl">Food</Text>
               <Text className="text-white text-xl">Order food you love</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
 
           <View className="flex-row justify-between">
-            <TouchableOpacity className="w-1/2 max-w-[48%] rounded-2xl overflow-hidden bg-white shadow-md">
+            <Pressable
+              onPress={() => {}}
+              className="w-1/2 max-w-[48%] rounded-2xl overflow-hidden bg-white shadow-md"
+            >
               <Image
                 source={ingredientsLogo}
                 className="w-60 h-60"
@@ -80,7 +89,7 @@ export default function ExploreScreen() {
                   Find recipes with your ingredients
                 </Text>
               </View>
-            </TouchableOpacity>
+            </Pressable>
 
             <TouchableOpacity className="w-1/2 max-w-[48%] rounded-2xl overflow-hidden bg-white shadow-md">
               <Image
@@ -99,9 +108,9 @@ export default function ExploreScreen() {
         <View className="flex-row justify-between items-center px-8">
           <Text className="font-bold text-2xl">Explore More</Text>
 
-          <Link href="/list_recipe">
+          <Pressable onPress={() => navigation.navigate("list_recipe")}>
             <AntDesign name="arrowright" size={24} color="black" />
-          </Link>
+          </Pressable>
         </View>
 
         <View className="mt-[-10]">
