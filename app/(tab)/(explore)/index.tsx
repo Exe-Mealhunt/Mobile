@@ -9,12 +9,12 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useNavigation } from "@react-navigation/native";
 
 import SearchInput from "../../../components/input/search_input";
 import CardFood from "@/components/cards/card_food";
 import { getRequest } from "@/helpers/api-requests";
 import homeBar from "../../../assets/images/home-bar.png";
-import { useNavigation } from "@react-navigation/native";
 import foodLogo from "../../../assets/images/Cards/food-logo.webp";
 import ingredientsLogo from "../../../assets/images/Cards/igredient-logo.jpg";
 import desertsLogo from "../../../assets/images/Cards/deserts.jpg";
@@ -75,7 +75,7 @@ export default function ExploreScreen() {
 
           <View className="flex-row justify-between">
             <Pressable
-              onPress={() => {}}
+              onPress={() => navigation.navigate("list_ingredient")}
               className="w-1/2 max-w-[48%] rounded-2xl overflow-hidden bg-white shadow-md"
             >
               <Image
